@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace RollCallSystem.Database
+{
+    /// <summary>
+    /// View &apos;c0h3ipgv5ohwo5f2.teacherlist&apos; references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+    /// </summary>
+    [Keyless]
+    public partial class Teacherlist
+    {
+    }
+}
