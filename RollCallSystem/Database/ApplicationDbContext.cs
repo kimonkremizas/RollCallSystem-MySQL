@@ -63,15 +63,11 @@ namespace RollCallSystem.Database
             modelBuilder.Entity<Studentlist>(entity =>
             {
                 entity.ToView("studentlist");
-
-                entity.HasComment("View 'c0h3ipgv5ohwo5f2.studentlist' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them");
             });
 
             modelBuilder.Entity<StudentsAttendingSubject>(entity =>
             {
                 entity.ToView("students_attending_subjects");
-
-                entity.HasComment("View 'c0h3ipgv5ohwo5f2.students_attending_subjects' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them");
             });
 
             modelBuilder.Entity<Subject>(entity =>
@@ -106,8 +102,6 @@ namespace RollCallSystem.Database
             modelBuilder.Entity<Teacherlist>(entity =>
             {
                 entity.ToView("teacherlist");
-
-                entity.HasComment("View 'c0h3ipgv5ohwo5f2.teacherlist' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them");
             });
 
             modelBuilder.Entity<Trophy>(entity =>

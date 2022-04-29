@@ -6,11 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RollCallSystem.Database
 {
-    /// <summary>
-    /// View &apos;c0h3ipgv5ohwo5f2.studentlist&apos; references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
-    /// </summary>
     [Keyless]
     public partial class Studentlist
     {
+        [Column("id")]
+        public int Id { get; set; }
+        [Column("email")]
+        [StringLength(45)]
+        public string Email { get; set; } = null!;
     }
 }
