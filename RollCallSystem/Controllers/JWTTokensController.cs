@@ -52,8 +52,13 @@ namespace RollCallSystem.Controllers
                     );
                     return Ok((new JwtSecurityTokenHandler().WriteToken(token)));
                 }
-
                 else
+                {
+                    return BadRequest("Invalid Credentials");
+                }
+            }
+
+            else
                 {
                     return BadRequest("Invalid Credentials");
                 }
@@ -67,4 +72,3 @@ namespace RollCallSystem.Controllers
             }
         }
     }
-}
