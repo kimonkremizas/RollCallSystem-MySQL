@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using RollCallSystem;
 using RollCallSystem.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 );
 
 builder.Services.AddDbContext<ApplicationDbContext>(opt =>
-    opt.UseMySql(System.Environment.GetEnvironmentVariable("CONNECTION_STRING"), ServerVersion.AutoDetect(System.Environment.GetEnvironmentVariable("CONNECTION_STRING"))));
+    opt.UseMySql(Secrets.ConnectionString, ServerVersion.AutoDetect(Secrets.ConnectionString)));
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(

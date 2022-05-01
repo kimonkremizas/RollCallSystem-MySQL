@@ -13,7 +13,6 @@ namespace RollCallSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class JWTTokensController : ControllerBase
     {
         public IConfiguration _configuration;
@@ -26,10 +25,16 @@ namespace RollCallSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(User user)
+        public async Task<IActionResult> Post(LoginUser loginUser)
         {
-            if (user != null && user.Email != null && user.Password != null)
+            if (loginUser != null && loginUser.Email != null && loginUser.Password != null)
             {
+                User user = new User()
+                {
+                    Email = loginUser.Email,
+                    Password = loginUser.Password,
+                };
+
                 var userData = await GetUser(user.Email, user.Password);
                 var jwt = _configuration.GetSection("Jwt").Get<Jwt>();
                 if (user != null)

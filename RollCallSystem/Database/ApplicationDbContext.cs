@@ -30,8 +30,7 @@ namespace RollCallSystem.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("server=spryrr1myu6oalwl.chr7pe7iynqr.eu-west-1.rds.amazonaws.com;database=c0h3ipgv5ohwo5f2;username=oz8r3qp1wop1mbpw;password=kd1z6qtn9rynvl30", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql"));
+                optionsBuilder.UseMySql(Secrets.ConnectionString, ServerVersion.AutoDetect(Secrets.ConnectionString));
             }
         }
 
