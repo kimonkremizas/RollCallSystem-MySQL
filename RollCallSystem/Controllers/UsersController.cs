@@ -49,11 +49,17 @@ namespace RollCallSystem.Controllers
 
         [HttpGet("self")]
         [Authorize]
-        public async Task<ActionResult<string>> GetSelf()
+        public async Task<ActionResult<User>> GetSelf()
         {
-            //Find out how to get the id of the user that is currently logged in and return the user of that id
-            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return userId;
+            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            User user = await _context.Users.FindAsync(Convert.ToInt32(userId));
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
         }
 
         // PUT: api/Users/5

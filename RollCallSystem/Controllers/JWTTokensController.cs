@@ -57,6 +57,10 @@ namespace RollCallSystem.Controllers
                     {
                         //Get the first role from my role list which I got above, that matches the roleId of the user that has logged in
                         claims.Add(new Claim(ClaimTypes.Role, roles.FirstOrDefault(x => x.Id == userData.RoleId).Name));
+
+                        //For ease of access (I don't know how to access the named ones set above lol), I store the user Id in the name type since we're not using that one
+                        //If anyone figures out how to access the Claim("Id") later, please let me know <3
+                        claims.Add(new Claim(ClaimTypes.Name, userData.Id.ToString()));
                     }
                     catch
                     {
