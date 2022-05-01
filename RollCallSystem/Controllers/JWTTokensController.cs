@@ -39,7 +39,7 @@ namespace RollCallSystem.Controllers
                 var jwt = _configuration.GetSection("Jwt").Get<Jwt>();
                 if (user != null)
                 {
-                    var claims = new[]
+                    var claims = new List<Claim>()
                     {
                         new Claim(JwtRegisteredClaimNames.Sub, jwt.Subject),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -48,12 +48,28 @@ namespace RollCallSystem.Controllers
                         new Claim("Email", user.Email),
                         new Claim("Password", user.Password)
                     };
+
+                    //Get all roles from the database (i.e. Teacher, Student)
+                    var roles = await _context.Roles.ToListAsync();
+                    if(roles == null) return NoContent();
+
+                    try
+                    {
+                        //Get the first role from my role list which I got above, that matches the roleId of the user that has logged in
+                        claims.Add(new Claim(ClaimTypes.Role, roles.FirstOrDefault(x => x.Id == userData.RoleId).Name));
+                    }
+                    catch
+                    {
+                        return BadRequest("Invalid Credentials");
+                    }
+                    
+
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.key));
                     var signin = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                     var token = new JwtSecurityToken(
                         jwt.Issuer,
                         jwt.Audience,
-                        claims,
+                        claims.ToArray(),
                         expires: DateTime.Now.AddMinutes(20),
                         signingCredentials: signin
                     );

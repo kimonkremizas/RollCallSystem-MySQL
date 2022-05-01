@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +26,7 @@ namespace RollCallSystem.Controllers
 
         // GET: api/Users
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
@@ -32,6 +34,7 @@ namespace RollCallSystem.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Teacher")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -44,9 +47,19 @@ namespace RollCallSystem.Controllers
             return user;
         }
 
+        [HttpGet("self")]
+        [Authorize]
+        public async Task<ActionResult<string>> GetSelf()
+        {
+            //Find out how to get the id of the user that is currently logged in and return the user of that id
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return userId;
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
             if (id != user.Id)
@@ -78,6 +91,7 @@ namespace RollCallSystem.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
             _context.Users.Add(user);
@@ -88,6 +102,7 @@ namespace RollCallSystem.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);

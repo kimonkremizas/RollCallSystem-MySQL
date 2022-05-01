@@ -19,7 +19,7 @@ namespace RollCallSystem.Database
         public int Id { get; set; }
         [Column("name")]
         [StringLength(45)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         [InverseProperty("Role")]
         public virtual ICollection<User> Users { get; set; }
