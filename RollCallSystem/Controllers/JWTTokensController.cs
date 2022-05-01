@@ -59,7 +59,7 @@ namespace RollCallSystem.Controllers
                         claims.Add(new Claim(ClaimTypes.Role, roles.FirstOrDefault(x => x.Id == userData.RoleId).Name));
 
                         //For ease of access (I don't know how to access the named ones set above lol), I store the user Id in the name type since we're not using that one
-                        //If anyone figures out how to access the Claim("Id") later, please let me know <3
+                        //If anyone figures out how to access the Claim("Id") later, please let me know <3 <3
                         claims.Add(new Claim(ClaimTypes.Name, userData.Id.ToString()));
                     }
                     catch
