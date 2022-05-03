@@ -25,7 +25,6 @@ namespace RollCallSystem.Controllers
 
         // GET: api/Trophies
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<Trophy>>> GetTrophies()
         {
             return await _context.Trophies.ToListAsync();
@@ -48,6 +47,7 @@ namespace RollCallSystem.Controllers
         // PUT: api/Trophies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutTrophy(int id, Trophy trophy)
         {
             if (id != trophy.Id)
@@ -79,6 +79,7 @@ namespace RollCallSystem.Controllers
         // POST: api/Trophies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Trophy>> PostTrophy(Trophy trophy)
         {
             _context.Trophies.Add(trophy);
@@ -89,6 +90,7 @@ namespace RollCallSystem.Controllers
 
         // DELETE: api/Trophies/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteTrophy(int id)
         {
             var trophy = await _context.Trophies.FindAsync(id);
