@@ -27,7 +27,12 @@ namespace RollCallSystem.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Subject>>> GetSubjects()
         {
-            return await _context.Subjects.ToListAsync();
+            var subjects = await _context.Subjects
+                .Include(s => s.Students)
+                .ToListAsync();
+
+            return subjects;
+            //return await _context.Subjects.ToListAsync();
         }
 
         // GET: api/Subjects/5

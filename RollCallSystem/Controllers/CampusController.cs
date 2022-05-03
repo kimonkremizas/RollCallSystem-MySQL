@@ -47,6 +47,7 @@ namespace RollCallSystem.Controllers
         // PUT: api/Campus/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutCampus(int id, Campus campus)
         {
             if (id != campus.Id)
@@ -78,6 +79,7 @@ namespace RollCallSystem.Controllers
         // POST: api/Campus
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Campus>> PostCampus(Campus campus)
         {
             _context.Campuses.Add(campus);
@@ -88,6 +90,7 @@ namespace RollCallSystem.Controllers
 
         // DELETE: api/Campus/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCampus(int id)
         {
             var campus = await _context.Campuses.FindAsync(id);
