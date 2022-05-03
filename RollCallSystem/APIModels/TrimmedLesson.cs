@@ -11,6 +11,7 @@ namespace RollCallSystem.APIModels
         public int? Code { get; set; }
         public DateTime? CodeTime { get; set; }
         public int? CampusId { get; set; }
+        public string CampusName { get; set; }
 
         public TrimmedLesson() { }
 

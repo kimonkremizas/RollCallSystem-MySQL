@@ -13,7 +13,7 @@ namespace RollCallSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class RolesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

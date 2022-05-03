@@ -33,6 +33,7 @@ namespace RollCallSystem.Controllers
             List<Subject> subjects = await _context.Subjects
                                                 .Include(s => s.Students)
                                                 .ToListAsync();
+            List<Campus> campuses = await _context.Campuses.ToListAsync();
 
             string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
@@ -52,6 +53,7 @@ namespace RollCallSystem.Controllers
                     newLesson.SubjectName = (from s in subjects
                                             where s.Id == newLesson.SubjectId
                                             select s.Name).FirstOrDefault();
+                    newLesson.CampusName = campuses.FirstOrDefault(x => x.Id == lesson.CampusId).Name;
                     trimmedLessons.Add(newLesson);
 
                 }
@@ -66,6 +68,7 @@ namespace RollCallSystem.Controllers
                 newLesson.SubjectName = (from s in subjects
                                          where s.Id == newLesson.SubjectId
                                          select s.Name).FirstOrDefault();
+                newLesson.CampusName = campuses.FirstOrDefault(x => x.Id == lesson.CampusId).Name;
                 trimmedLessons.Add(newLesson);
             }
 
@@ -75,7 +78,7 @@ namespace RollCallSystem.Controllers
         // GET: api/Lessons/5
         [HttpGet("{id}")]
         [Authorize(Roles = "Teacher, Admin")]
-        public async Task<ActionResult<Lesson>> GetLesson(int id)
+        public async Task<ActionResult<TrimmedLesson>> GetLesson(int id)
         {
             var lesson = await _context.Lessons.FindAsync(id);
 
@@ -84,7 +87,141 @@ namespace RollCallSystem.Controllers
                 return NotFound();
             }
 
-            return lesson;
+            TrimmedLesson trimmedLesson = new TrimmedLesson(lesson.Id, lesson.StartTime, lesson.SubjectId, lesson.Code, lesson.CodeTime, lesson.CampusId);
+            Subject subject = await _context.Subjects
+                                        .Where(s => s.Id == trimmedLesson.SubjectId)
+                                        .FirstOrDefaultAsync();
+            Campus campus = await _context.Campuses
+                                        .Where(c => c.Id == trimmedLesson.CampusId)
+                                        .FirstOrDefaultAsync();
+            trimmedLesson.SubjectName = subject.Name;
+            trimmedLesson.CampusName = campus.Name;
+            return trimmedLesson;
+        }
+
+        // GET BY SUBJECT: api/Lessons/BySubject/5
+        [HttpGet("BySubject/{id}")]
+        public async Task<ActionResult<IEnumerable<TrimmedLesson>>> GetLessonsBySubject(int id)
+        {
+            string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            Subject subject = await _context.Subjects
+                                                .Where(x => x.Id == id)
+                                                .Include(s => s.Students)
+                                                .FirstAsync();
+
+            List<Lesson> lessons = await _context.Lessons
+                                                .Where(x => x.SubjectId == id)
+                                                .ToListAsync();
+
+            List<Campus> campuses = await _context.Campuses.ToListAsync();
+
+            if(userRole == "Student")
+            {
+                string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+                if (!subject.Students.Any(x => x.Id.ToString() == userId))
+                {
+                    return Unauthorized();
+                }
+            }
+
+            List<TrimmedLesson> trimmedLessons = new List<TrimmedLesson>();
+            foreach(Lesson lesson in lessons)
+            {
+                TrimmedLesson trimmedLesson = new TrimmedLesson(lesson.Id, lesson.StartTime, lesson.SubjectId, lesson.Code, lesson.CodeTime, lesson.CampusId);
+                trimmedLesson.SubjectName = subject.Name;
+                trimmedLesson.CampusName = campuses.FirstOrDefault(x => x.Id == lesson.CampusId).Name;
+                trimmedLessons.Add(trimmedLesson);
+            }
+
+            return trimmedLessons;
+        }
+
+        // START ROLL CALL: api/Lesssons/StartRollCall/5
+        [HttpPut("StartRollCall/{id}")]
+        [Authorize(Roles = "Teacher")]
+        public async Task<ActionResult<string>> StartRollCall(int id)
+        {
+            var lesson = await _context.Lessons.FindAsync(id);
+            if (lesson == null)
+            {
+                return NotFound();
+            }
+
+            Subject subject = await _context.Subjects.FindAsync(lesson.SubjectId);
+            if (subject == null)
+            {
+                return NotFound();
+            }
+
+            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            if(userId != subject.TeacherId.ToString())
+            {
+                return "You are not the teacher of this subject and therefore cannot start a roll call.";
+            }
+            
+            if(lesson.Code != null || lesson.CodeTime != null)
+            {
+                return "This lesson has already had a roll call.";
+            }
+
+            lesson.Code = Logic.RollCallCodeGenerator.GenerateCode();
+            lesson.CodeTime = DateTime.Now;
+
+            _context.Entry(lesson).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LessonExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return "Roll call has started.";
+        }
+
+        // CHECK IN TO LESSON: api/Lessons/CheckIn/5
+        [HttpPost("CheckIn/{id}")]
+        [Authorize(Roles = "Student")]
+        public async Task<ActionResult<string>> CheckIn(int id, int code)
+        {
+            var lesson = await _context.Lessons.FindAsync(id);
+
+            if (lesson == null)
+            {
+                return NotFound();
+            }
+
+            if(lesson.Code == null || lesson.CodeTime == null)
+            {
+                return BadRequest();
+            }
+
+            if (lesson.Code != code)
+            {
+                return "Incorrect code.";
+            }
+
+            TimeSpan span = (TimeSpan)(DateTime.Now - lesson.CodeTime);
+            if (span.TotalMinutes > 10)
+            {
+                return "You can no longer check into this lesson.";
+            }
+
+            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            var noOfRowAffected = await _context.Database
+                .ExecuteSqlRawAsync($"insert into attending_student (student_id, lesson_id) value({userId}, {lesson.Id}); ");
+
+            if (noOfRowAffected == 0) return BadRequest();
+            else return "You have checked in!";
         }
 
         // PUT: api/Lessons/5
