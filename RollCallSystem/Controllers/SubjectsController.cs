@@ -33,6 +33,10 @@ namespace RollCallSystem.Controllers
                 .Include(s => s.Students)
                 .ToListAsync();
 
+            var teachers = await _context.Users
+                .Where(x => x.RoleId == 1)
+                .ToListAsync();
+
             string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
             
             if(userRole == "Student")
@@ -45,7 +49,10 @@ namespace RollCallSystem.Controllers
                 
             foreach(Subject subject in subjects)
             {
-                trimmedSubjects.Add(new TrimmedSubject(subject.Id, subject.Name, subject.TeacherId));
+                TrimmedSubject trimmedSubject = new TrimmedSubject(subject.Id, subject.Name, subject.TeacherId);
+                User theTeacher = teachers.FirstOrDefault(x => x.Id == subject.TeacherId);
+                trimmedSubject.TeacherName = theTeacher.FirstName + " " + theTeacher.LastName;
+                trimmedSubjects.Add(trimmedSubject);
             }
 
             return trimmedSubjects;
@@ -58,6 +65,10 @@ namespace RollCallSystem.Controllers
             Subject subject;
             var subjects = await _context.Subjects
                 .Include(s => s.Students)
+                .ToListAsync();
+
+            var teachers = await _context.Users
+                .Where(x => x.RoleId == 1)
                 .ToListAsync();
 
             subject = subjects.FirstOrDefault(x => x.Id == id);
@@ -78,6 +89,8 @@ namespace RollCallSystem.Controllers
             }
 
             TrimmedSubject trimmedSubject = new TrimmedSubject(subject.Id, subject.Name, subject.TeacherId);
+            User theTeacher = teachers.FirstOrDefault(x => x.Id == subject.TeacherId);
+            trimmedSubject.TeacherName = theTeacher.FirstName + " " + theTeacher.LastName;
             return trimmedSubject;
         }
 
@@ -90,12 +103,46 @@ namespace RollCallSystem.Controllers
                 .Include(s => s.Students)
                 .ToListAsync();
 
+            var teachers = await _context.Users
+                .Where(x => x.RoleId == 1)
+                .ToListAsync();
+
             subjects = subjects.Where(x => x.Students.Any(y => y.Id == id)).ToList();
 
             List<TrimmedSubject> trimmedSubjects = new List<TrimmedSubject>();
             foreach(Subject subject in subjects)
             {
-                trimmedSubjects.Add(new TrimmedSubject(subject.Id, subject.Name, subject.TeacherId));
+                TrimmedSubject trimmedSubject = new TrimmedSubject(subject.Id, subject.Name, subject.TeacherId);
+                User theTeacher = teachers.FirstOrDefault(x => x.Id == subject.TeacherId);
+                trimmedSubject.TeacherName = theTeacher.FirstName + " " + theTeacher.LastName;
+                trimmedSubjects.Add(trimmedSubject);
+            }
+
+            return trimmedSubjects;
+        }
+
+        // GET BY TEACHER: api/Subjects/ByTeacher/5
+        [HttpGet("ByTeacher/{id}")]
+        [Authorize(Roles = "Teacher, Admin")]
+        public async Task<ActionResult<List<TrimmedSubject>>> GetSubjectByTeacher(int id)
+        {
+            var subjects = await _context.Subjects
+                .Include(s => s.Students)
+                .ToListAsync();
+
+            var teachers = await _context.Users
+                .Where(x => x.RoleId == 1)
+                .ToListAsync();
+
+            subjects = subjects.Where(x => x.TeacherId == id).ToList();
+
+            List<TrimmedSubject> trimmedSubjects = new List<TrimmedSubject>();
+            foreach (Subject subject in subjects)
+            {
+                TrimmedSubject trimmedSubject = new TrimmedSubject(subject.Id, subject.Name, subject.TeacherId);
+                User theTeacher = teachers.FirstOrDefault(x => x.Id == subject.TeacherId);
+                trimmedSubject.TeacherName = theTeacher.FirstName + " " + theTeacher.LastName;
+                trimmedSubjects.Add(trimmedSubject);
             }
 
             return trimmedSubjects;
