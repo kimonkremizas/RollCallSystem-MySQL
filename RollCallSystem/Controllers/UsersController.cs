@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RollCallSystem.APIModels;
 using RollCallSystem.Database;
 
 namespace RollCallSystem.Controllers
@@ -26,16 +27,55 @@ namespace RollCallSystem.Controllers
 
         // GET: api/Users
         [HttpGet]
-        [Authorize(Roles = "Teacher")]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        [Authorize(Roles = "Teacher, Admin")]
+        public async Task<ActionResult<IEnumerable<TrimmedUser>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var users = await _context.Users.ToListAsync();
+            List<TrimmedUser> trimmedUsers = new List<TrimmedUser>();
+
+            foreach(User user in users)
+            {
+                trimmedUsers.Add(new TrimmedUser(user.Id, user.Email, user.FirstName, user.LastName, user.RoleId));
+            }
+
+            return trimmedUsers;
+        }
+
+        // GET: api/Users/Teachers
+        [HttpGet("Teachers")]
+        public async Task<ActionResult<IEnumerable<TrimmedUser>>> GetTeachers()
+        {
+            var users = await _context.Users.Where(x => x.RoleId == 1).ToListAsync();
+            List<TrimmedUser> trimmedUsers = new List<TrimmedUser>();
+
+            foreach (User user in users)
+            {
+                trimmedUsers.Add(new TrimmedUser(user.Id, user.Email, user.FirstName, user.LastName, user.RoleId));
+            }
+
+            return trimmedUsers;
+        }
+
+        // GET: api/Users/Students
+        [HttpGet("Students")]
+        [Authorize(Roles = "Teacher, Admin")]
+        public async Task<ActionResult<IEnumerable<TrimmedUser>>> GetStudents()
+        {
+            var users = await _context.Users.Where(x => x.RoleId == 0).ToListAsync();
+            List<TrimmedUser> trimmedUsers = new List<TrimmedUser>();
+
+            foreach (User user in users)
+            {
+                trimmedUsers.Add(new TrimmedUser(user.Id, user.Email, user.FirstName, user.LastName, user.RoleId));
+            }
+
+            return trimmedUsers;
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "Teacher")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        [Authorize(Roles = "Teacher, Admin")]
+        public async Task<ActionResult<TrimmedUser>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
 
@@ -44,12 +84,12 @@ namespace RollCallSystem.Controllers
                 return NotFound();
             }
 
-            return user;
+            return new TrimmedUser(user.Id, user.Email, user.FirstName, user.LastName, user.RoleId);
         }
 
-        [HttpGet("self")]
-        [Authorize]
-        public async Task<ActionResult<User>> GetSelf()
+        // GET: api/Users/Self
+        [HttpGet("Self")]
+        public async Task<ActionResult<TrimmedUser>> GetSelf()
         {
             string userId = User.FindFirst(ClaimTypes.Name)?.Value;
             User user = await _context.Users.FindAsync(Convert.ToInt32(userId));
@@ -59,13 +99,13 @@ namespace RollCallSystem.Controllers
                 return NotFound();
             }
 
-            return user;
+            return new TrimmedUser(user.Id, user.Email, user.FirstName, user.LastName, user.RoleId);
         }
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
             if (id != user.Id)
@@ -97,7 +137,7 @@ namespace RollCallSystem.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
             _context.Users.Add(user);
@@ -108,7 +148,7 @@ namespace RollCallSystem.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
