@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -42,6 +43,70 @@ namespace RollCallSystem.Controllers
             }
 
             return trophy;
+        }
+
+        // GET BY STUDENT: api/Trophies/ByStudent/5
+        [HttpGet("ByStudent/{id}")]
+        public async Task<ActionResult<IEnumerable<Trophy>>> GetTrophiesByStudent(int id)
+        {
+            string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            if (userRole == "Student")
+            {
+                string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+                if (userId != id.ToString()) return Unauthorized();
+            }
+
+            var student = await _context.Users
+                .Where(x => x.Id == id && x.RoleId == 0)
+                .Include(x => x.Trophies)
+                .FirstAsync();
+
+            List<Trophy> trophies = new List<Trophy>();
+            foreach(Trophy trophy in student.Trophies)
+            {
+                trophy.Students = null;
+                trophies.Add(trophy);
+            }
+            return trophies;
+        }
+
+        //ASSIGN TROPHY TO STUDENT: api/Trophies/Assign/1/1
+        [HttpPost("Assign/{trophyId}/{studentId}")]
+        [Authorize(Roles = "Teacher")]
+        public async Task<ActionResult<string>> AssignTrophy(int trophyId, int studentId)
+        {
+            var student = await _context.Users
+                .Where(x => x.Id == studentId && x.RoleId == 0)
+                .Include(x => x.Trophies)
+                .FirstAsync();
+
+            if(student == null)
+            {
+                return NotFound();
+            }
+
+            var trophy = await _context.Trophies.FindAsync(trophyId);
+
+            if(trophy == null)
+            {
+                return NotFound();
+            }
+
+            if(student.Trophies.Any(x => x.Id == trophyId))
+            {
+                return "This student already has this trophy.";
+            }
+
+            if((bool)trophy.Automatic)
+            {
+                return "This trophy cannot be assigned manually.";
+            }
+
+            var noOfRowAffected = await _context.Database
+                .ExecuteSqlRawAsync($"insert into student_trophies (student_id, trophy_id) value({student.Id}, {trophy.Id}); ");
+
+            if (noOfRowAffected == 0) return BadRequest();
+            else return "Trophy given!";
         }
 
         // PUT: api/Trophies/5
