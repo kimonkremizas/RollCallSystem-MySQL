@@ -1,10 +1,8 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using RollCallSystem;
 using RollCallSystem.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,8 +21,10 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     }
 );
 
+string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+
 builder.Services.AddDbContext<ApplicationDbContext>(opt =>
-    opt.UseMySql(Secrets.ConnectionString, ServerVersion.AutoDetect(Secrets.ConnectionString)));
+    opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(
@@ -80,19 +80,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RollCallSystem v1"));
+app.UseCors(builder =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RollCallSystem v1"));
-    app.UseCors(builder =>
-    {
-        builder
-        .AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader();
-    });
-}
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

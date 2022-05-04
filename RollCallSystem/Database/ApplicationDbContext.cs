@@ -26,14 +26,6 @@ namespace RollCallSystem.Database
         public virtual DbSet<Trophy> Trophies { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseMySql(Secrets.ConnectionString, ServerVersion.AutoDetect(Secrets.ConnectionString));
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseCollation("utf8mb4_0900_ai_ci")
