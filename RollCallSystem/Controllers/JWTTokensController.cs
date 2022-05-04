@@ -90,12 +90,5 @@ namespace RollCallSystem.Controllers
                     return BadRequest("Invalid Credentials");
                 }
             }
-
-
-            [HttpGet]
-            public async Task<User> GetUser(string userEmail, string userPassword)
-            {
-                return await _context.Users.FirstOrDefaultAsync(u => u.Email == userEmail && u.Password == userPassword);
-            }
         }
     }
