@@ -65,6 +65,7 @@ namespace RollCallSystem.Controllers
             Subject subject;
             var subjects = await _context.Subjects
                 .Include(s => s.Students)
+                .Where(s => s.Id == id)
                 .ToListAsync();
 
             var teachers = await _context.Users
