@@ -102,14 +102,6 @@ namespace RollCallSystem.Controllers
             return new TrimmedUser(user.Id, user.Email, user.FirstName, user.LastName, user.RoleId);
         }
 
-        //DROPPED: EF CANNOT CALL STORED FUNCTIONS AND THE ONLY METHOD TO EXECUTE RAW QUERIES ONLY RETURNS ROWS AFFECTED AS INT
-        //// GET STUDENT ATTENDANCE BY SUBJECT: api/Users/Attendance/5/5
-        //[HttpGet("Attendance/{studentId}/{subjectId}")]
-        //public async Task<ActionResult<string>> GetStudentAttendancePercentageBySubject(int studentId, int subjectId)
-        //{
-            
-        //}
-
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

@@ -13,6 +13,8 @@ namespace RollCallSystem.APIModels
         public int? CampusId { get; set; }
         public string CampusName { get; set; }
 
+        public string TeacherName { get; set; }
+
         public TrimmedLesson() { }
 
         public TrimmedLesson(int id, DateTime startTime, int? subjectId = null, int? code = null, DateTime? codeTime = null, int? campusId = null)

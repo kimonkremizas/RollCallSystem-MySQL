@@ -25,6 +25,57 @@ namespace RollCallSystem.Controllers
             _context = context;
         }
 
+        // GET CURRENT: api/Lessons/Current
+        [HttpGet("Current")]
+        [Authorize(Roles = "Student, Teacher")]
+        public async Task<ActionResult<TrimmedLesson>> GetCurrentLesson()
+        {
+            string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+
+            List<Subject> subjects = new List<Subject>();
+
+            if (userRole == "Teacher")
+            {
+                subjects = await _context.Subjects
+                                        .Where(x => x.TeacherId.ToString() == userId)
+                                        .ToListAsync();
+            }
+
+            if(userRole == "Student")
+            {
+                subjects = await _context.Subjects
+                                        .Include(s => s.Students)
+                                        .Where(x => x.Students.Any(x => x.Id.ToString() == userId))
+                                        .ToListAsync();
+            }
+
+            List<int> subjectIds = subjects.Select(x => x.Id).ToList();
+            List<int?> teacherIds = subjects.Select(x => x.TeacherId).ToList();
+
+            List<Lesson> lessonsByTime = await _context.Lessons
+                                .Where(x => subjectIds.Contains((int)x.SubjectId))
+                                .OrderBy(x => x.StartTime)
+                                .ToListAsync();
+
+            Lesson lesson = lessonsByTime.Where(x => x.StartTime > DateTime.Now.AddHours(-1)).FirstOrDefault();
+
+            List <User> users = await _context.Users.Where(x => x.RoleId == 1 && teacherIds.Contains(x.Id)).ToListAsync();
+
+            Campus campus = await _context.Campuses.Where(x => x.Id == lesson.CampusId).FirstOrDefaultAsync();
+            User teacher = (from s in subjects
+                            join u in users on s.TeacherId equals u.Id
+                            where s.Id == lesson.SubjectId
+                            select u).FirstOrDefault();
+
+            TrimmedLesson trimmed = new TrimmedLesson(lesson.Id, lesson.StartTime, lesson.SubjectId, lesson.Code, lesson.CodeTime, lesson.CampusId);
+            trimmed.CampusName = campus.Name;
+            trimmed.SubjectName = subjects.Where(x => x.Id == trimmed.SubjectId).First().Name;
+            trimmed.TeacherName = teacher.FirstName;
+
+            return trimmed;
+        }
+
         // GET: api/Lessons
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TrimmedLesson>>> GetLessons()
