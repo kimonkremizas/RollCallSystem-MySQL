@@ -140,7 +140,7 @@ namespace RollCallSystem.Controllers
             TrimmedLesson trimmed = new TrimmedLesson(lesson.Id, lesson.StartTime, lesson.SubjectId, lesson.Code, lesson.CodeTime, lesson.CampusId);
             trimmed.CampusName = campus.Name;
             trimmed.SubjectName = subjects.Where(x => x.Id == trimmed.SubjectId).First().Name;
-            trimmed.TeacherName = teacher.FirstName;
+            trimmed.TeacherName = teacher.FirstName + " " + teacher.LastName;
 
             return trimmed;
         }
