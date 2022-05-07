@@ -25,6 +25,41 @@ namespace RollCallSystem.Controllers
             _context = context;
         }
 
+        // DID STUDENT CHECK IN?: api/Lessons/CheckedIn/5
+        [HttpGet("CheckedIn/{id}")]
+        [Authorize(Roles = "Student")]
+        public async Task<ActionResult<bool>> DidStudentCheckIn(int id)
+        {
+            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+
+            Lesson thisLesson = await _context.Lessons
+                                    .Include(x => x.Students)
+                                    .Where(x => x.Id == id)
+                                    .FirstOrDefaultAsync();
+
+            return thisLesson.Students.Any(x => x.Id.ToString() == userId);
+        }
+
+        // GET ALL CHECKED IN STUDENTS: api/Lessons/GetAllCheckedIn/5
+        [HttpGet("GetAllCheckedIn/{id}")]
+        [Authorize(Roles = "Teacher, Admin")]
+        public async Task<ActionResult<List<TrimmedUser>>> GetAllCheckedIn(int id)
+        {
+            Lesson thisLesson = await _context.Lessons
+                                    .Include(x => x.Students)
+                                    .Where(x => x.Id == id)
+                                    .FirstOrDefaultAsync();
+
+            List<TrimmedUser> students = new List<TrimmedUser>();
+
+            foreach(User student in thisLesson.Students)
+            {
+                students.Add(new TrimmedUser(student.Id, student.Email, student.FirstName, student.LastName, student.RoleId));
+            }
+
+            return students;
+        }
+
         // GET CURRENT: api/Lessons/Current
         [HttpGet("Current")]
         [Authorize(Roles = "Student, Teacher")]
