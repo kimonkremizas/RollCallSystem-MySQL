@@ -25,6 +25,40 @@ namespace RollCallSystem.Controllers
             _context = context;
         }
 
+        // GET ALL LESSONS OF USER BY MONTH: api/Lessons/ByMonth/5
+        [HttpGet("ByMonth/{monthNo}")]
+        [Authorize(Roles = "Teacher, Student")]
+        public async Task<ActionResult<List<TrimmedLesson>>> GetByMonth(int monthNo)
+        {
+            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            List<Lesson> lessons = new List<Lesson>();
+
+            if(userRole == "Teacher")
+            {
+                lessons = await (from l in _context.Lessons
+                                 join s in _context.Subjects on l.SubjectId equals s.Id
+                                 where s.TeacherId.ToString() == userId && l.StartTime.Month == monthNo
+                                 select l).ToListAsync();
+            }
+            else
+            {
+                lessons = await (from l in _context.Lessons
+                                 join s in _context.Subjects.Include(x => x.Students) on l.SubjectId equals s.Id
+                                 where s.Students.Any(x => x.Id.ToString() == userId) && l.StartTime.Month == monthNo
+                                 select l).ToListAsync();
+            }
+
+            List<TrimmedLesson> trimmed = new List<TrimmedLesson>();
+            foreach(Lesson lesson in lessons)
+            {
+                trimmed.Add(new TrimmedLesson(lesson.Id, lesson.StartTime, lesson.SubjectId, lesson.Code, lesson.CodeTime, lesson.CampusId));
+            }
+
+            return trimmed;
+        }
+
         // DID STUDENT CHECK IN?: api/Lessons/CheckedIn/5
         [HttpGet("CheckedIn/{id}")]
         [Authorize(Roles = "Student")]
