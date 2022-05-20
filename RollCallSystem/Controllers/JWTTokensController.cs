@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,24 +30,29 @@ namespace RollCallSystem.Controllers
         {
             if (loginUser != null && loginUser.Email != null && loginUser.Password != null)
             {
+
                 User user = new User()
                 {
+
                     Email = loginUser.Email,
-                    Password = loginUser.Password,
+                    Password = loginUser.Password, 
                 };
+                string salt = await GetSalt(user.Email);
+                if (salt == null) return NotFound();
+                user.Password = HashPasswordWithSalt(salt, loginUser.Password);
 
                 var userData = await GetUser(user.Email, user.Password);
                 var jwt = _configuration.GetSection("Jwt").Get<Jwt>();
-                if (user != null)
+                if (userData != null)
                 {
                     var claims = new List<Claim>()
                     {
                         new Claim(JwtRegisteredClaimNames.Sub, jwt.Subject),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("Id", user.Id.ToString()),
-                        new Claim("Email", user.Email),
-                        new Claim("Password", user.Password)
+                        new Claim("Id", userData.Id.ToString()),
+                        new Claim("Email", userData.Email),
+                        new Claim("Password", userData.Password)
                     };
 
                     //Get all roles from the database (i.e. Teacher, Student)
@@ -95,5 +101,26 @@ namespace RollCallSystem.Controllers
             {
                 return await _context.Users.FirstOrDefaultAsync(u => u.Email == userEmail && u.Password == userPassword);
             }
+
+            private async Task<string> GetSalt(string userEmail)
+        {
+            return await (from u in _context.Users
+                          where u.Email == userEmail
+                          select u.Salt).FirstOrDefaultAsync();
         }
+
+        private String HashPasswordWithSalt(string salt, string password)
+        {
+            byte[] saltByte = Encoding.UTF8.GetBytes(salt);
+            password += Environment.GetEnvironmentVariable("PEPPER");
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: password,
+                salt: saltByte,
+                prf: KeyDerivationPrf.HMACSHA256,
+                iterationCount: 1000,
+                numBytesRequested: 256 / 8));
+            Console.WriteLine(hashed);
+            return hashed;
+        }
+    }
     }
