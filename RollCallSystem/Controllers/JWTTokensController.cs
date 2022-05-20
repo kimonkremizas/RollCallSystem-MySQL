@@ -37,7 +37,7 @@ namespace RollCallSystem.Controllers
                     Email = loginUser.Email,
                     Password = loginUser.Password, 
                 };
-                string salt = await GetSalt(user.Email);
+                string? salt = await GetSalt(user.Email);
                 if (salt == null) return NotFound();
                 user.Password = HashPasswordWithSalt(salt, loginUser.Password);
 
@@ -102,7 +102,7 @@ namespace RollCallSystem.Controllers
                 return await _context.Users.FirstOrDefaultAsync(u => u.Email == userEmail && u.Password == userPassword);
             }
 
-            private async Task<string> GetSalt(string userEmail)
+            private async Task<string?> GetSalt(string userEmail)
         {
             return await (from u in _context.Users
                           where u.Email == userEmail
