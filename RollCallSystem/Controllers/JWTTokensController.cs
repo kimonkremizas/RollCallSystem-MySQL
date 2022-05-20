@@ -117,8 +117,8 @@ namespace RollCallSystem.Controllers
                 password: password,
                 salt: saltByte,
                 prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 1000,
-                numBytesRequested: 256 / 8));
+                iterationCount: int.Parse(Environment.GetEnvironmentVariable("ITERATION_COUNT")),
+                numBytesRequested: int.Parse(Environment.GetEnvironmentVariable("NUM_BYTES_REQUESTED"))));
             Console.WriteLine(hashed);
             return hashed;
         }
