@@ -1,0 +1,27 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.1
+
+jobs:
+  test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - run:
+          command: wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && sudo dpkg -i packages-microsoft-prod.deb
+          name: Pre-Install tasks
+      - run:
+          command: sudo apt-get update && sudo apt-get install -y apt-transport-https && sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0
+          name: Install dotnet-skd-6.0
+      - run:
+          command: dotnet test -v n --results-directory:test_coverage --collect:"Code Coverage"
+      - run:
+          command: pwd
+      - store_artifacts:
+          path: ~/project/test_coverage
+workflows:
+  test_my_app:
+    jobs:
+      - test
