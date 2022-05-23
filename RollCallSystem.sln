@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollCallSystem", "RollCallSystem\RollCallSystem.csproj", "{22E1AA25-144E-43AF-B64C-2A3F76D2885C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollCallSystem-Test", "RollCallSystem-Test\RollCallSystem-Test.csproj", "{34A959E4-2471-4173-8F91-3B633863BFED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "RollCallSystem-Test\test.csproj", "{34A959E4-2471-4173-8F91-3B633863BFED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
