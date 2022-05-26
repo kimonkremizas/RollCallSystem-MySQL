@@ -25,8 +25,11 @@ namespace RollCallSystem.Database
         [StringLength(45)]
         public string Email { get; set; } = null!;
         [Column("password")]
-        [StringLength(45)]
+        [StringLength(256)]
         public string Password { get; set; } = null!;
+        [Column("salt")]
+        [StringLength(256)]
+        public string Salt { get; set; } = null!;
         [Column("firstName")]
         [StringLength(45)]
         public string FirstName { get; set; } = null!;
