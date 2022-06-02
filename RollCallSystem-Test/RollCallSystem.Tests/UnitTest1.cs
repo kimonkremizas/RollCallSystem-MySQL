@@ -11,15 +11,15 @@ namespace RollCallSystem_Test;
 [TestClass]
 public class UnitTest1
 {
-
+    //Template
     [TestMethod]
     public async Task TestMethod1()
     {
+        //Arrange
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
             .UseInMemoryDatabase(databaseName: "RollCallDatabase")
             .Options;
 
-        // Insert seed data into the database using one instance of the context
         using (var context = new ApplicationDbContext(options))
         {
             context.Users.Add(new User { Id = 1, Email = "one@email.com", Password = "pwd1", Salt = "salt", FirstName = "One", LastName = "One", RoleId = 0 });
@@ -31,11 +31,16 @@ public class UnitTest1
             context.SaveChanges();
         }
 
+        //Clean context
         using (var context = new ApplicationDbContext(options))
         {
+            //Act
             UsersController usersController = new UsersController(context);
             var result = await usersController.GetUsers();
             List<TrimmedUser> users = (List<TrimmedUser>)result.Value!;
+
+            context.Database.EnsureDeleted();
+            //Assert
             Assert.AreEqual(6, users.Count);
         }
     }

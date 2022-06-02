@@ -19,10 +19,17 @@ namespace RollCallSystem.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly TrimmedUser _mockUser = default;
 
         public UsersController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public UsersController(ApplicationDbContext context, TrimmedUser mockUser)
+        {
+            _context = context;
+            _mockUser = mockUser;
         }
 
         // GET: api/Users
@@ -91,7 +98,13 @@ namespace RollCallSystem.Controllers
         [HttpGet("Self")]
         public async Task<ActionResult<TrimmedUser>> GetSelf()
         {
-            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            string userId;
+
+            //Testability
+            if (_mockUser != default)
+                userId = _mockUser.Id.ToString();
+            else userId = User.FindFirst(ClaimTypes.Name)?.Value;
+
             User user = await _context.Users.FindAsync(Convert.ToInt32(userId));
 
             if (user == null)
