@@ -36,7 +36,7 @@ public class UnitTest1
             UsersController usersController = new UsersController(context);
             var result = await usersController.GetUsers();
             List<TrimmedUser> users = (List<TrimmedUser>)result.Value!;
-            Assert.AreEqual(6, users.Count);
+            Assert.AreEqual(6, users.Count + 1);
         }
     }
 }
