@@ -15,7 +15,7 @@ jobs:
       - run:
           command: sudo apt-get update && sudo apt-get install -y apt-transport-https && sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0
           name: Install dotnet-skd-6.0
-      - run: dotnet test --no-build --logger "trx"
+      - run: dotnet test --no-build --logger trx
       - run:
           name: test results
           when: always
