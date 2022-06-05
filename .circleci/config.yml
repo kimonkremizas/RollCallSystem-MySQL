@@ -15,8 +15,14 @@ jobs:
       - run:
           command: sudo apt-get update && sudo apt-get install -y apt-transport-https && sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0
           name: Install dotnet-skd-6.0
+
       - run:
-          command: dotnet test -v n --results-directory:test_coverage --collect:"Code Coverage"
+          command: dotnet tool install JetBrains.dotCover.GlobalTool -g
+          name: Install and run dotCover tool
+      - run:
+          command: dotnet build
+      - run:
+          command: dotnet dotcover test --dcReportType=XML
       - run:
           command: pwd
       - store_artifacts:

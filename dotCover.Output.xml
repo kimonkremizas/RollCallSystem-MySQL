@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root CoveredStatements="516" TotalStatements="1389" CoveragePercent="37" ReportType="Xml" DotCoverVersion="2022.1.2">
+  <Assembly Name="RollCallSystem" CoveredStatements="230" TotalStatements="1103" CoveragePercent="21">
+    <Namespace Name="RollCallSystem" CoveredStatements="0" TotalStatements="11" CoveragePercent="0">
+      <Type Name="LoginUser" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+        <AutoProperty Name="Email:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Password:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="WeatherForecast" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+        <AutoProperty Name="Date:DateTime" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Summary:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="TemperatureC:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <Property Name="TemperatureF:int" CoveredStatements="0" TotalStatements="1" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Property>
+      </Type>
+    </Namespace>
+    <Namespace Name="RollCallSystem.APIModels" CoveredStatements="18" TotalStatements="77" CoveragePercent="23">
+      <Type Name="TrimmedLesson" CoveredStatements="0" TotalStatements="31" CoveragePercent="0">
+        <Constructor Name="TrimmedLesson()" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Constructor Name="TrimmedLesson(int,DateTime,Nullable&lt;int&gt;,Nullable&lt;int&gt;,Nullable&lt;DateTime&gt;,Nullable&lt;int&gt;)" CoveredStatements="0" TotalStatements="10" CoveragePercent="0" />
+        <AutoProperty Name="CampusId:Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="CampusName:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Code:Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="CodeTime:Nullable&lt;DateTime&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="StartTime:DateTime" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="SubjectId:Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="SubjectName:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="TeacherName:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="TrimmedSubject" CoveredStatements="0" TotalStatements="19" CoveragePercent="0">
+        <Constructor Name="TrimmedSubject()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Constructor Name="TrimmedSubject(int,string,Nullable&lt;int&gt;)" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Name:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="TeacherId:Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="TeacherName:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="TrimmedUser" CoveredStatements="18" TotalStatements="27" CoveragePercent="67">
+        <Constructor Name="TrimmedUser()" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <Constructor Name="TrimmedUser(int,string,string,string,Nullable&lt;int&gt;)" CoveredStatements="11" TotalStatements="11" CoveragePercent="100" />
+        <AutoProperty Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="FirstName:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Id:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="LastName:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="RoleId:Nullable&lt;int&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+      </Type>
+    </Namespace>
+    <Namespace Name="RollCallSystem.Controllers" CoveredStatements="93" TotalStatements="716" CoveragePercent="13">
+      <Type Name="CampusController" CoveredStatements="0" TotalStatements="48" CoveragePercent="0">
+        <Constructor Name="CampusController(ApplicationDbContext)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CampusExists(int):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="DeleteCampus(int):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetCampus(int):Task&lt;ActionResult&lt;Campus&gt;&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetCampuses():Task&lt;ActionResult&lt;IEnumerable&lt;Campus&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Method>
+        <Method Name="PostCampus(Campus):Task&lt;ActionResult&lt;Campus&gt;&gt;" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Method>
+        <Method Name="PutCampus(int,Campus):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="JWTTokensController" CoveredStatements="0" TotalStatements="51" CoveragePercent="0">
+        <Constructor Name="JWTTokensController(IConfiguration,ApplicationDbContext)" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <Method Name="GetSalt(string):Task&lt;string&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetUser(string,string):Task&lt;User&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Method>
+        <Method Name="HashPasswordWithSalt(string,string):string" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        <Method Name="Post(LoginUser):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="33" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="33" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="32" CoveragePercent="0" />
+            <AnonymousMethod Name="(Role):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+      </Type>
+      <Type Name="LessonsController" CoveredStatements="0" TotalStatements="248" CoveragePercent="0">
+        <Constructor Name="LessonsController(ApplicationDbContext)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="CheckIn(int,int):Task&lt;ActionResult&lt;string&gt;&gt;" CoveredStatements="0" TotalStatements="21" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="21" CoveragePercent="0" />
+        </Method>
+        <Method Name="DeleteLesson(int):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        </Method>
+        <Method Name="DidStudentCheckIn(int):Task&lt;ActionResult&lt;bool&gt;&gt;" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+            <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetAllCheckedIn(int):Task&lt;ActionResult&lt;List&lt;TrimmedUser&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetByMonth(int):Task&lt;ActionResult&lt;List&lt;TrimmedLesson&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="21" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="21" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetCurrentLesson():Task&lt;ActionResult&lt;TrimmedLesson&gt;&gt;" CoveredStatements="0" TotalStatements="34" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="34" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="25" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):int" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Lesson):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject,User):{Subject,User}" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(Subject):Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(User):Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AnonymousMethod>
+            <AnonymousMethod Name="({Subject,User}):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="({Subject,User}):User" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetLesson(int):Task&lt;ActionResult&lt;TrimmedLesson&gt;&gt;" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetLessons():Task&lt;ActionResult&lt;IEnumerable&lt;TrimmedLesson&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="46" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="46" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="34" CoveragePercent="0" />
+            <AnonymousMethod Name="(Lesson,Subject):{Lesson,Subject}" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+              <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(Lesson):Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(Subject):Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AnonymousMethod>
+            <AnonymousMethod Name="({Lesson,Subject}):bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AnonymousMethod>
+            <AnonymousMethod Name="({Lesson,Subject}):Lesson" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Campus):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):string" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Campus):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetLessonsBySubject(int):Task&lt;ActionResult&lt;IEnumerable&lt;TrimmedLesson&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="27" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="27" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="25" CoveragePercent="0" />
+            <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(Campus):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="LessonExists(int):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <Method Name="PostLesson(Lesson):Task&lt;ActionResult&lt;Lesson&gt;&gt;" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Method>
+        <Method Name="PutLesson(int,Lesson):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+        </Method>
+        <Method Name="StartRollCall(int):Task&lt;ActionResult&lt;string&gt;&gt;" CoveredStatements="0" TotalStatements="31" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="31" CoveragePercent="0" />
+        </Method>
+      </Type>
+      <Type Name="RolesController" CoveredStatements="0" TotalStatements="48" CoveragePercent="0">
+        <Constructor Name="RolesController(ApplicationDbContext)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="DeleteRole(int):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetRole(int):Task&lt;ActionResult&lt;Role&gt;&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetRoles():Task&lt;ActionResult&lt;IEnumerable&lt;Role&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Method>
+        <Method Name="PostRole(Role):Task&lt;ActionResult&lt;Role&gt;&gt;" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Method>
+        <Method Name="PutRole(int,Role):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+        </Method>
+        <Method Name="RoleExists(int):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="SubjectsController" CoveredStatements="0" TotalStatements="125" CoveragePercent="0">
+        <Constructor Name="SubjectsController(ApplicationDbContext)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="DeleteSubject(int):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetSubject(int):Task&lt;ActionResult&lt;TrimmedSubject&gt;&gt;" CoveredStatements="0" TotalStatements="23" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="23" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="20" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetSubjectByStudent(int):Task&lt;ActionResult&lt;List&lt;TrimmedSubject&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AnonymousMethod>
+            <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetSubjectByTeacher(int):Task&lt;ActionResult&lt;List&lt;TrimmedSubject&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="19" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="19" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="GetSubjects():Task&lt;ActionResult&lt;IEnumerable&lt;TrimmedSubject&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="25" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="25" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="22" CoveragePercent="0" />
+            <AnonymousMethod Name="(Subject):bool" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+              <OwnCoverage CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+              <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+            </AnonymousMethod>
+            <AnonymousMethod Name="(User):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="PostSubject(Subject):Task&lt;ActionResult&lt;Subject&gt;&gt;" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Method>
+        <Method Name="PutSubject(int,Subject):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+        </Method>
+        <Method Name="SubjectExists(int):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="TrophiesController" CoveredStatements="0" TotalStatements="89" CoveragePercent="0">
+        <Constructor Name="TrophiesController(ApplicationDbContext)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Method Name="AssignTrophy(int,int):Task&lt;ActionResult&lt;string&gt;&gt;" CoveredStatements="0" TotalStatements="21" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="21" CoveragePercent="0">
+            <OwnCoverage CoveredStatements="0" TotalStatements="20" CoveragePercent="0" />
+            <AnonymousMethod Name="(Trophy):bool" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="DeleteTrophy(int):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="9" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetTrophies():Task&lt;ActionResult&lt;IEnumerable&lt;Trophy&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="3" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetTrophiesByStudent(int):Task&lt;ActionResult&lt;IEnumerable&lt;Trophy&gt;&gt;&gt;" CoveredStatements="0" TotalStatements="20" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="20" CoveragePercent="0" />
+        </Method>
+        <Method Name="GetTrophy(int):Task&lt;ActionResult&lt;Trophy&gt;&gt;" CoveredStatements="0" TotalStatements="7" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="7" CoveragePercent="0" />
+        </Method>
+        <Method Name="PostTrophy(Trophy):Task&lt;ActionResult&lt;Trophy&gt;&gt;" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        </Method>
+        <Method Name="PutTrophy(int,Trophy):Task&lt;IActionResult&gt;" CoveredStatements="0" TotalStatements="17" CoveragePercent="0">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+        </Method>
+        <Method Name="TrophyExists(int):bool" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Type>
+      <Type Name="UsersController" CoveredStatements="93" TotalStatements="98" CoveragePercent="95">
+        <Constructor Name="UsersController(ApplicationDbContext)" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+        <Constructor Name="UsersController(ApplicationDbContext,TrimmedUser)" CoveredStatements="6" TotalStatements="6" CoveragePercent="100" />
+        <Method Name="DeleteUser(int):Task&lt;IActionResult&gt;" CoveredStatements="9" TotalStatements="9" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="9" TotalStatements="9" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetSelf():Task&lt;ActionResult&lt;TrimmedUser&gt;&gt;" CoveredStatements="7" TotalStatements="10" CoveragePercent="70">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="7" TotalStatements="10" CoveragePercent="70" />
+        </Method>
+        <Method Name="GetStudents():Task&lt;ActionResult&lt;IEnumerable&lt;TrimmedUser&gt;&gt;&gt;" CoveredStatements="12" TotalStatements="12" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetTeachers():Task&lt;ActionResult&lt;IEnumerable&lt;TrimmedUser&gt;&gt;&gt;" CoveredStatements="12" TotalStatements="12" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetUser(int):Task&lt;ActionResult&lt;TrimmedUser&gt;&gt;" CoveredStatements="7" TotalStatements="7" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" />
+        </Method>
+        <Method Name="GetUsers():Task&lt;ActionResult&lt;IEnumerable&lt;TrimmedUser&gt;&gt;&gt;" CoveredStatements="12" TotalStatements="12" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" />
+        </Method>
+        <Method Name="PostUser(User):Task&lt;ActionResult&lt;User&gt;&gt;" CoveredStatements="5" TotalStatements="5" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+        </Method>
+        <Method Name="PutUser(int,User):Task&lt;IActionResult&gt;" CoveredStatements="15" TotalStatements="17" CoveragePercent="88">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="15" TotalStatements="17" CoveragePercent="88" />
+        </Method>
+        <Method Name="UserExists(int):bool" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+      </Type>
+      <Type Name="WeatherForecastController" CoveredStatements="0" TotalStatements="9" CoveragePercent="0">
+        <Constructor Name="WeatherForecastController(ILogger&lt;WeatherForecastController&gt;)" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <Constructor Name="WeatherForecastController()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <Method Name="Get():IEnumerable&lt;WeatherForecast&gt;" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(int):WeatherForecast" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </Method>
+      </Type>
+    </Namespace>
+    <Namespace Name="RollCallSystem.Database" CoveredStatements="119" TotalStatements="248" CoveragePercent="48">
+      <Type Name="ApplicationDbContext" CoveredStatements="91" TotalStatements="111" CoveragePercent="82">
+        <Constructor Name="ApplicationDbContext()" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+        <Constructor Name="ApplicationDbContext(DbContextOptions&lt;ApplicationDbContext&gt;)" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" />
+        <AutoProperty Name="Campuses:DbSet&lt;Campus&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Lessons:DbSet&lt;Lesson&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Roles:DbSet&lt;Role&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Studentlists:DbSet&lt;Studentlist&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="StudentsAttendingSubjects:DbSet&lt;StudentsAttendingSubject&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Subjects:DbSet&lt;Subject&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Teacherlists:DbSet&lt;Teacherlist&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Trophies:DbSet&lt;Trophy&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Users:DbSet&lt;User&gt;" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <Method Name="OnModelCreating(ModelBuilder):void" CoveredStatements="69" TotalStatements="69" CoveragePercent="100">
+          <OwnCoverage CoveredStatements="11" TotalStatements="11" CoveragePercent="100" />
+          <AnonymousMethod Name="(EntityTypeBuilder&lt;Campus&gt;):void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <AnonymousMethod Name="(EntityTypeBuilder&lt;Lesson&gt;):void" CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+          <AnonymousMethod Name="(EntityTypeBuilder&lt;Studentlist&gt;):void" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <AnonymousMethod Name="(EntityTypeBuilder&lt;StudentsAttendingSubject&gt;):void" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <AnonymousMethod Name="(EntityTypeBuilder&lt;Subject&gt;):void" CoveredStatements="14" TotalStatements="14" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="4" TotalStatements="4" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):ReferenceCollectionBuilder&lt;User,Dictionary&lt;string,object&gt;&gt;" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):ReferenceCollectionBuilder&lt;Subject,Dictionary&lt;string,object&gt;&gt;" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+          </AnonymousMethod>
+          <AnonymousMethod Name="(EntityTypeBuilder&lt;Teacherlist&gt;):void" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <AnonymousMethod Name="(EntityTypeBuilder&lt;Trophy&gt;):void" CoveredStatements="3" TotalStatements="3" CoveragePercent="100" />
+          <AnonymousMethod Name="(EntityTypeBuilder&lt;User&gt;):void" CoveredStatements="24" TotalStatements="24" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="5" TotalStatements="5" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):ReferenceCollectionBuilder&lt;Lesson,Dictionary&lt;string,object&gt;&gt;" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):ReferenceCollectionBuilder&lt;User,Dictionary&lt;string,object&gt;&gt;" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):void" CoveredStatements="7" TotalStatements="7" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):ReferenceCollectionBuilder&lt;Trophy,Dictionary&lt;string,object&gt;&gt;" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):ReferenceCollectionBuilder&lt;User,Dictionary&lt;string,object&gt;&gt;" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(EntityTypeBuilder&lt;Dictionary&lt;string,object&gt;&gt;):void" CoveredStatements="8" TotalStatements="8" CoveragePercent="100" />
+          </AnonymousMethod>
+        </Method>
+      </Type>
+      <Type Name="Campus" CoveredStatements="0" TotalStatements="16" CoveragePercent="0">
+        <Constructor Name="Campus()" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Lessons:ICollection&lt;Lesson&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Location:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Name:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Ssid:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="Jwt" CoveredStatements="0" TotalStatements="8" CoveragePercent="0">
+        <AutoProperty Name="Audience:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Issuer:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="key:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Subject:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="Lesson" CoveredStatements="0" TotalStatements="22" CoveragePercent="0">
+        <Constructor Name="Lesson()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <AutoProperty Name="Campus:Campus" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="CampusId:Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Code:Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="CodeTime:Nullable&lt;DateTime&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="StartTime:DateTime" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Students:ICollection&lt;User&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Subject:Subject" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="SubjectId:Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="Role" CoveredStatements="0" TotalStatements="10" CoveragePercent="0">
+        <Constructor Name="Role()" CoveredStatements="0" TotalStatements="4" CoveragePercent="0" />
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Name:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Users:ICollection&lt;User&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="Studentlist" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+        <Constructor Name="Studentlist()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <AutoProperty Name="Email:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="StudentsAttendingSubject" CoveredStatements="0" TotalStatements="4" CoveragePercent="0">
+        <AutoProperty Name="Email:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Subjects:long" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="Subject" CoveredStatements="0" TotalStatements="18" CoveragePercent="0">
+        <Constructor Name="Subject()" CoveredStatements="0" TotalStatements="6" CoveragePercent="0" />
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Lessons:ICollection&lt;Lesson&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Name:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Students:ICollection&lt;User&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Teacher:User" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="TeacherId:Nullable&lt;int&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="Teacherlist" CoveredStatements="0" TotalStatements="5" CoveragePercent="0">
+        <Constructor Name="Teacherlist()" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <AutoProperty Name="Email:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="Trophy" CoveredStatements="0" TotalStatements="13" CoveragePercent="0">
+        <Constructor Name="Trophy()" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <AutoProperty Name="Automatic:Nullable&lt;bool&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Id:int" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Name:string" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="Students:ICollection&lt;User&gt;" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+      </Type>
+      <Type Name="User" CoveredStatements="28" TotalStatements="36" CoveragePercent="78">
+        <Constructor Name="User()" CoveredStatements="12" TotalStatements="12" CoveragePercent="100" />
+        <AutoProperty Name="Email:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="FirstName:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Id:int" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="LastName:string" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Lessons:ICollection&lt;Lesson&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Password:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Role:Role" CoveredStatements="0" TotalStatements="2" CoveragePercent="0">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        </AutoProperty>
+        <AutoProperty Name="RoleId:Nullable&lt;int&gt;" CoveredStatements="2" TotalStatements="2" CoveragePercent="100">
+          <PropertyGetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Salt:string" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Subjects:ICollection&lt;Subject&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="SubjectsNavigation:ICollection&lt;Subject&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+        <AutoProperty Name="Trophies:ICollection&lt;Trophy&gt;" CoveredStatements="1" TotalStatements="2" CoveragePercent="50">
+          <PropertyGetter CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+          <PropertySetter CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+        </AutoProperty>
+      </Type>
+    </Namespace>
+    <Namespace Name="RollCallSystem.Logic" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+      <Type Name="RollCallCodeGenerator" CoveredStatements="0" TotalStatements="12" CoveragePercent="0">
+        <Method Name="GenerateCode():int" CoveredStatements="0" TotalStatements="12" CoveragePercent="0" />
+      </Type>
+    </Namespace>
+    <Type Name="Program" CoveredStatements="0" TotalStatements="39" CoveragePercent="0">
+      <Method Name="&lt;Main&gt;$(string[]):void" CoveredStatements="0" TotalStatements="39" CoveragePercent="0">
+        <OwnCoverage CoveredStatements="0" TotalStatements="17" CoveragePercent="0" />
+        <AnonymousMethod Name="(MvcNewtonsoftJsonOptions):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <AnonymousMethod Name="(DbContextOptionsBuilder):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <AnonymousMethod Name="(CorsOptions):void" CoveredStatements="0" TotalStatements="6" CoveragePercent="0">
+          <OwnCoverage CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+          <AnonymousMethod Name="(CorsPolicyBuilder):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        </AnonymousMethod>
+        <AnonymousMethod Name="(SwaggerGenOptions):void" CoveredStatements="0" TotalStatements="5" CoveragePercent="0" />
+        <AnonymousMethod Name="(JwtBearerOptions):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+        <AnonymousMethod Name="(SwaggerUIOptions):void" CoveredStatements="0" TotalStatements="1" CoveragePercent="0" />
+        <AnonymousMethod Name="(CorsPolicyBuilder):void" CoveredStatements="0" TotalStatements="3" CoveragePercent="0" />
+      </Method>
+    </Type>
+  </Assembly>
+  <Assembly Name="test" CoveredStatements="286" TotalStatements="286" CoveragePercent="100">
+    <Namespace Name="RollCallSystem_Test" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
+      <Type Name="UnitTest1" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
+        <Method Name="TestMethod1():Task" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="21" TotalStatements="21" CoveragePercent="100" />
+        </Method>
+      </Type>
+    </Namespace>
+    <Namespace Name="RollCallSystem_Test.RollCallSystem.Tests" CoveredStatements="265" TotalStatements="265" CoveragePercent="100">
+      <Type Name="UserControllerTests" CoveredStatements="265" TotalStatements="265" CoveragePercent="100">
+        <Method Name="TestDelete():Task" CoveredStatements="23" TotalStatements="23" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="23" TotalStatements="23" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="22" TotalStatements="22" CoveragePercent="100" />
+            <AnonymousMethod Name="(TrimmedUser):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="TestDeleteNotFound():Task" CoveredStatements="20" TotalStatements="20" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="20" TotalStatements="20" CoveragePercent="100" />
+        </Method>
+        <Method Name="TestGetSelf():Task" CoveredStatements="22" TotalStatements="22" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="22" TotalStatements="22" CoveragePercent="100" />
+        </Method>
+        <Method Name="TestGetStudents():Task" CoveredStatements="25" TotalStatements="25" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="25" TotalStatements="25" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="22" TotalStatements="22" CoveragePercent="100" />
+            <AnonymousMethod Name="(TrimmedUser):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(TrimmedUser):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(TrimmedUser):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="TestGetTeachers():Task" CoveredStatements="24" TotalStatements="24" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="24" TotalStatements="24" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="22" TotalStatements="22" CoveragePercent="100" />
+            <AnonymousMethod Name="(TrimmedUser):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+            <AnonymousMethod Name="(TrimmedUser):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="TestGetUserById():Task" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="21" TotalStatements="21" CoveragePercent="100" />
+        </Method>
+        <Method Name="TestGetUserByIdNotFound():Task" CoveredStatements="20" TotalStatements="20" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="20" TotalStatements="20" CoveragePercent="100" />
+        </Method>
+        <Method Name="TestGetUsers():Task" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="21" TotalStatements="21" CoveragePercent="100" />
+        </Method>
+        <Method Name="TestPost():Task" CoveredStatements="24" TotalStatements="24" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="24" TotalStatements="24" CoveragePercent="100">
+            <OwnCoverage CoveredStatements="23" TotalStatements="23" CoveragePercent="100" />
+            <AnonymousMethod Name="(TrimmedUser):bool" CoveredStatements="1" TotalStatements="1" CoveragePercent="100" />
+          </InternalCompiledMethod>
+        </Method>
+        <Method Name="TestPut():Task" CoveredStatements="23" TotalStatements="23" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="23" TotalStatements="23" CoveragePercent="100" />
+        </Method>
+        <Method Name="TestPutBadRequest():Task" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="21" TotalStatements="21" CoveragePercent="100" />
+        </Method>
+        <Method Name="TestPutNotFound():Task" CoveredStatements="21" TotalStatements="21" CoveragePercent="100">
+          <InternalCompiledMethod Name="MoveNext():void" CoveredStatements="21" TotalStatements="21" CoveragePercent="100" />
+        </Method>
+      </Type>
+    </Namespace>
+  </Assembly>
+</Root>
