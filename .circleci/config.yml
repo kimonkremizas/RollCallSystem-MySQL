@@ -39,15 +39,3 @@ workflows:
   build_and_test:
     jobs:
       - build_and_test
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
