@@ -122,8 +122,19 @@ namespace RollCallSystem.Controllers
         [Authorize(Roles = "Student, Teacher")]
         public async Task<ActionResult<TrimmedLesson>> GetCurrentLesson()
         {
-            string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
-            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            string userRole;
+            string userId;
+            
+            if(_mockUser == default)
+            {
+                userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+                userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            }
+            else
+            {
+                userRole = HelperFunctions.GetRoleName(_mockUser.RoleId);
+                userId = _mockUser.Id.ToString();
+            }
 
             List<Subject> subjects = new List<Subject>();
 
@@ -178,13 +189,24 @@ namespace RollCallSystem.Controllers
                                                 .ToListAsync();
             List<Campus> campuses = await _context.Campuses.ToListAsync();
 
-            string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            string userRole;
+            string userId;
+
+            if (_mockUser == default)
+                userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            else
+                userRole = HelperFunctions.GetRoleName(_mockUser.RoleId);
+
 
             var trimmedLessons = new List<TrimmedLesson>();
 
             if (userRole == "Student")
             {
-                string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+                if(_mockUser == default)
+                    userId = User.FindFirst(ClaimTypes.Name)?.Value;
+                else
+                    userId = _mockUser.Id.ToString();
+
                 var availableLesssons = from l in lessons
                                         join s in subjects on l.SubjectId equals s.Id
                                         where s.Students.Any(x => x.Id.ToString() == userId)
