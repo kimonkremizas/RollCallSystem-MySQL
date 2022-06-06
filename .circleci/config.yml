@@ -4,7 +4,7 @@ orbs:
   node: circleci/node@5.0.1
 
 jobs:
-  test:
+  build_and_test:
     executor:
       name: node/default
     steps:
@@ -16,12 +16,38 @@ jobs:
           command: sudo apt-get update && sudo apt-get install -y apt-transport-https && sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0
           name: Install dotnet-skd-6.0
       - run:
-          command: dotnet test -v n --results-directory:test_coverage --collect:"Code Coverage"
+          name: Build
+          command: dotnet build
+      - run: 
+          name: Run tests
+          command: dotnet test --no-build --logger "trx" --results-directory tests/TestResults/
       - run:
-          command: pwd
+          name: Generate test results
+          when: always
+          command: |
+            dotnet new tool-manifest
+            dotnet tool install --local trx2junit
+            pwd
+            dotnet trx2junit tests/TestResults/*.trx
+      - store_test_results:
+          name: Store test results in tests
+          path: tests/TestResults
       - store_artifacts:
-          path: ~/project/test_coverage
+          name: Store test results in artifacts
+          path: tests/TestResults
 workflows:
-  test_my_app:
+  build_and_test:
     jobs:
-      - test
+      - build_and_test
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
