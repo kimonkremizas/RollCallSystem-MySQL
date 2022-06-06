@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RollCallSystem.APIModels;
 using RollCallSystem.Database;
+using RollCallSystem.Logic;
 
 namespace RollCallSystem.Controllers
 {
@@ -19,10 +20,16 @@ namespace RollCallSystem.Controllers
     public class LessonsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly TrimmedUser _mockUser = default;
 
         public LessonsController(ApplicationDbContext context)
         {
             _context = context;
+        }
+        public LessonsController(ApplicationDbContext context, TrimmedUser mockUser)
+        {
+            _context = context;
+            _mockUser = mockUser;
         }
 
         // GET ALL LESSONS OF USER BY MONTH: api/Lessons/ByMonth/5
@@ -30,8 +37,19 @@ namespace RollCallSystem.Controllers
         [Authorize(Roles = "Teacher, Student")]
         public async Task<ActionResult<List<TrimmedLesson>>> GetByMonth(int monthNo)
         {
-            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
-            string userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            string userId;
+            string userRole;
+
+            if(_mockUser == default)
+            {
+                userId = User.FindFirst(ClaimTypes.Name)?.Value;
+                userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            }
+            else
+            {
+                userId = _mockUser.Id.ToString();
+                userRole = HelperFunctions.GetRoleName(_mockUser.RoleId);
+            }
 
             List<Lesson> lessons = new List<Lesson>();
 
@@ -64,7 +82,12 @@ namespace RollCallSystem.Controllers
         [Authorize(Roles = "Student")]
         public async Task<ActionResult<bool>> DidStudentCheckIn(int id)
         {
-            string userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            string userId;
+
+            if (_mockUser == default)
+                userId = User.FindFirst(ClaimTypes.Name)?.Value;
+            else
+                userId = _mockUser.Id.ToString();
 
             Lesson thisLesson = await _context.Lessons
                                     .Include(x => x.Students)
